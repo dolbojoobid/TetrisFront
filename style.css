@@ -1,0 +1,38 @@
+body {
+    background: darkcyan;
+}
+
+
+.grid-container {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin-bottom: 200px;
+    margin-top: 200px;
+    margin-left: 500px;
+    margin-right: 500px;
+}
+.grid-item {
+    background-color: slategrey;
+    border: 1px solid black;
+    padding: 50px;
+    font-size: 30px;
+    text-align: center;
+}
+.juut {
+    width: 100%;
+    height: 100%;
+    display:flex;
+    justify-content: center;
+}
+.nupp-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.nupp{
+    border: 4px solid black;
+    font-size: 40px;
+    background: white;
+    padding: 3px;
+}
