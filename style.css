@@ -1,5 +1,5 @@
 body {
-    background: darkcyan;
+    background: url("https://www.dotnuvabaltic.ee/image/cache/case-ih-magnum-310-naudotas-traktorius-202211220659500-cr-439x309.jpg");
 }
 
 
@@ -19,18 +19,18 @@ body {
     font-size: 30px;
     text-align: center;
 }
-.juut {
+.game {
     width: 100%;
     height: 100%;
     display:flex;
     justify-content: center;
 }
-.nupp-container{
+.nupp-container {
     display: flex;
     justify-content: center;
     width: 100%;
 }
-.nupp{
+.nupp {
     border: 4px solid black;
     font-size: 40px;
     background: white;
