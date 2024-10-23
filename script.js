@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const gridItems = document.querySelectorAll('.grid-item');
-    const newGameButton = document.querySelector('.nupp');
+    const newGameButton = document.querySelector('.button');
     let currentPlayer = 'X';
     let gameActive = true;
     let gameState = ['', '', '', '', '', '', '', '', ''];
