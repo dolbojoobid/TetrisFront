@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const gridItems = document.querySelectorAll('.grid-item');
     const newGameButton = document.querySelector('.button');
