@@ -46,5 +46,48 @@ body,html {
     padding: 10px 20px;
     font-size: 16px;
 }
-
-
+.score {
+    display: flex;
+    margin-bottom: 100px;
+    width: 350px
+}
+.computer {
+    display: flex;
+    margin-left: 100px;
+    align-items: center;
+    font-size: 25px;
+}
+.player {
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    font-size: 25px;
+}
+.versus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: transparent;
+    color: orange;
+    font-size: 25px;
+}
+.Playagainst {
+    padding: 10px;
+}
+.button-bot {
+    font-size: 20px;
+    background: #333;
+    padding: 3px;
+    color: orange;
+    margin: 5px;
+}
+.button-player {
+    font-size: 20px;
+    background: #333;
+    padding: 3px;
+    color: orange;
+}
