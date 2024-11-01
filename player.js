@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPlayer = 'X';
     let gameActive = true;
     let gameState = ['', '', '', '', '', '', '', '', ''];
+    let pscore = 0
+    let cscore = 0
 
     const winningConditions = [
         [0, 1, 2],
@@ -30,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (checkWin()) {
             alert(`${currentPlayer} wins!`);
+            
             gameActive = false;
             return;
         }

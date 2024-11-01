@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPlayer = 'X';
     let gameActive = true;
     let gameState = ['', '', '', '', '', '', '', '', ''];
+    let pscore = 0
+    let cscore = 0
+
 
     const winningConditions = [
         [0, 1, 2],
@@ -29,12 +32,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (checkWin()) {
             alert(`${currentPlayer} wins!`);
+            const element = document.querySelector('.suguti');
+            pscore += 1
+            element.innerHTML = "<p>" + pscore + "</p>"
+
             gameActive = false;
             return;
         }
 
         if (checkDraw()) {
-            alert(`It's a draw!`);
+
             gameActive = false;
             return;
         }
@@ -60,10 +67,14 @@ document.addEventListener('DOMContentLoaded', () => {
         gridItems[randomIndex].textContent = 'O';
 
         if (checkWin()) {
-            alert(`O wins!`);
+            alert(`0 wins!`);
+            const element = document.querySelector('.suguti2');
+            cscore += 1
+            element.innerHTML = "<p>" + cscore + "</p>"
             gameActive = false;
             return;
         }
+
 
         if (checkDraw()) {
             alert(`It's a draw!`);
