@@ -1,0 +1,98 @@
+body,html {
+    background: #333;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.point {
+    color: orange;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.grid-container {
+    background: black;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    width: 300px;
+    height: 300px;
+}
+.grid-item {
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+.button {
+    border: 4px solid black;
+    font-size: 40px;
+    background: #777;
+    padding: 3px;
+}
+.nupp-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+.score {
+    display: flex;
+    margin-bottom: 100px;
+    width: 400px
+}
+.computer {
+    display: flex;
+    margin-left: 100px;
+    align-items: center;
+    font-size: 25px;
+}
+.player {
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    font-size: 25px;
+}
+.versus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: transparent;
+    color: orange;
+    font-size: 25px;
+}
+.Playagainst {
+    padding: 10px;
+}
+.button-bot {
+    font-size: 20px;
+    background: #333;
+    padding: 3px;
+    color: orange;
+    margin: 5px;
+}
+.button-player {
+    font-size: 20px;
+    background: #333;
+    padding: 3px;
+    color: orange;
+}
+.score1 {
+    font-size: 25px;
+}
+.score2 {
+    font-size: 25px;
+}
