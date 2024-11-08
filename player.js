@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const gridItems = document.querySelectorAll('.grid-item');
     const newGameButton = document.querySelector('.button');
@@ -32,9 +31,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (checkWin()) {
             alert(`${currentPlayer} wins!`);
-            
+
+            if (currentPlayer === 'X') {
+                const element = document.querySelector('.score1');
+                pscore += 1;
+                element.innerHTML = "<p>" + pscore + "</p>"
+            }
+            if (currentPlayer === 'O') {
+                const element = document.querySelector('.score2');
+                cscore += 1
+                element.innerHTML = "<p>" + cscore + "</p>"
+            }
             gameActive = false;
             return;
+
         }
 
         if (checkDraw()) {
@@ -44,6 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+
+        if (currentPlayer === 'O' && gameActive) {
+
+        }
     }
 
     function checkWin() {

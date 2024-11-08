@@ -1,3 +1,38 @@
+const username = prompt("Enter your username");
+
+async function downloadUserData() {
+    const url = "https://kool.krister.ee/chat/tictactoe"
+    try {
+        const a = await fetch(url, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json"
+            },
+        })
+        await a.json().then((UsersData) => {
+            UsersData.sort((a, b) => b.message - a.message);
+            const leaderboard = document.querySelector('.leaderboard');
+            console.log(UsersData)
+            let array = []
+
+            for (let i = 0; i < UsersData.length; i++) {
+                if (!UsersData[i].name && !UsersData[i].message ) continue;
+                array.push("<p>" + UsersData[i].name + ": " + UsersData[i].message + "</p>")
+
+            }
+            let unique = [...new Set(array)];
+            leaderboard.innerHTML += unique.join("");
+        })
+
+
+    } catch (e) {
+        console.error(e)
+    }
+}
+
+downloadUserData()
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const gridItems = document.querySelectorAll('.grid-item');
     const newGameButton = document.querySelector('.button');
@@ -6,6 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let gameState = ['', '', '', '', '', '', '', '', ''];
     let pscore = 0
     let cscore = 0
+    const usernameBox = document.querySelector('.player');
+    usernameBox.innerHTML = "<p>" + username.toUpperCase() + ": </p>"
 
 
     const winningConditions = [
@@ -32,16 +69,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (checkWin()) {
             alert(`${currentPlayer} wins!`);
-            const element = document.querySelector('.suguti');
+            const element = document.querySelector('.score1');
             pscore += 1
             element.innerHTML = "<p>" + pscore + "</p>"
-
             gameActive = false;
             return;
         }
 
         if (checkDraw()) {
-
+            alert(`It's a draw!`);
             gameActive = false;
             return;
         }
@@ -54,21 +90,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function computerMove() {
-        // Find all empty cells
         const emptyCells = gameState
             .map((cell, index) => (cell === '' ? index : null))
             .filter(index => index !== null);
 
         if (emptyCells.length === 0) return; // No moves left
 
-        // Choose a random empty cell
         const randomIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
         gameState[randomIndex] = 'O';
         gridItems[randomIndex].textContent = 'O';
 
         if (checkWin()) {
             alert(`0 wins!`);
-            const element = document.querySelector('.suguti2');
+            const element = document.querySelector('.score2');
             cscore += 1
             element.innerHTML = "<p>" + cscore + "</p>"
             gameActive = false;
@@ -107,4 +141,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     gridItems.forEach(cell => cell.addEventListener('click', handleCellClick));
     newGameButton.addEventListener('click', resetGame);
-});
+
+
+    newGameButton.addEventListener('click', async function (event) {
+        const url = "https://kool.krister.ee/chat/tictactoe"
+        const message = {message: pscore, name: username}
+        console.log("message outgoing", message)
+        const result = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(message)
+        })
+        console.log("POST result", result)
+
+
+    })
+    setInterval(checkWin, 3000)
+})
+
