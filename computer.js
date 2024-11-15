@@ -9,6 +9,7 @@ async function downloadUserData() {
                 "Content-Type": "application/json"
             },
         })
+
         await a.json().then((UsersData) => {
             UsersData.sort((a, b) => b.message - a.message);
             const leaderboard = document.querySelector('.leaderboard');
@@ -109,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-
         if (checkDraw()) {
             alert(`It's a draw!`);
             gameActive = false;
@@ -160,4 +160,3 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     setInterval(checkWin, 3000)
 })
-
