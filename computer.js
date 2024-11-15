@@ -11,19 +11,32 @@ async function downloadUserData() {
         })
 
         await a.json().then((UsersData) => {
-            UsersData.sort((a, b) => b.message - a.message);
+            UsersData.sort((a, b) => b.message - a.message)
+            const asd = Object.groupBy(UsersData, item => item.name)
+
+            let leaderboardX = {}
+            for (let [name, arrData] of Object.entries(asd)) {
+                const scoreArr = arrData.map(item => item.message)
+                const maxScore = Math.max(...scoreArr)
+                leaderboardX[name] = maxScore
+            }
+
+            console.log(leaderboardX)
+
+            console.log(asd)
             const leaderboard = document.querySelector('.leaderboard');
             console.log(UsersData)
             let array = []
 
             for (let i = 0; i < UsersData.length; i++) {
-                if (!UsersData[i].name && !UsersData[i].message ) continue;
+                if (!UsersData[i].name && !UsersData[i].message) continue;
                 array.push("<p>" + UsersData[i].name + ": " + UsersData[i].message + "</p>")
 
             }
             let unique = [...new Set(array)];
             leaderboard.innerHTML += unique.join("");
-        })
+        });
+
 
 
     } catch (e) {
