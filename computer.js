@@ -3,16 +3,12 @@ const username = prompt("Enter your username");
 async function downloadUserData() {
     const url = "https://kool.krister.ee/chat/tictactoe"
     try {
-        const a = await fetch(url, {
-            method: 'GET',
-            headers: {
-                "Content-Type": "application/json"
-            },
-        })
+        const a = await fetch(url)
 
         await a.json().then((UsersData) => {
             UsersData.sort((a, b) => b.message - a.message)
             const asd = Object.groupBy(UsersData, item => item.name)
+            console.log("asd", asd)
 
             let leaderboardX = {}
             for (let [name, arrData] of Object.entries(asd)) {
@@ -21,16 +17,16 @@ async function downloadUserData() {
                 leaderboardX[name] = maxScore
             }
 
-            console.log(leaderboardX)
+            console.log("leaderboardX", leaderboardX)
 
             console.log(asd)
             const leaderboard = document.querySelector('.leaderboard');
             console.log(UsersData)
             let array = []
 
-            for (let i = 0; i < UsersData.length; i++) {
-                if (!UsersData[i].name && !UsersData[i].message) continue;
-                array.push("<p>" + UsersData[i].name + ": " + UsersData[i].message + "</p>")
+            for (let [name, maxScore] of Object.entries(leaderboardX)) {
+                if (!name && maxScore === undefined) continue;
+                array.push("<p>" + name + ": " + maxScore + "</p>");
 
             }
             let unique = [...new Set(array)];
